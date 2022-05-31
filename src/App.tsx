@@ -22,10 +22,13 @@ function App() {
       return title;
     } catch (error: any) {
       console.log(error.message);
+      throw error;
     }
   }
 
-  getData().then((title) => setTitle(title));
+  getData()
+    .then((x) => setTitle(x))
+    .catch((err) => console.log('error message :', err.message));
 
   return (
     <div className="App">
